@@ -1,5 +1,35 @@
+# Node modules
 node_modules
-dist
-.git
-.DS_Store
 npm-debug.log*
+
+# Build output
+dist
+.vite
+
+# Development files
+.git
+.gitignore
+README.md
+.env
+.env.local
+
+# Docker files
+Dockerfile
+Dockerfile.prod
+docker-compose.yml
+docker-compose.prod.yml
+.dockerignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
