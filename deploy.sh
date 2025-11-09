@@ -18,13 +18,13 @@ echo -e "${YELLOW}Pulling latest changes...${NC}"
 git pull origin main || echo -e "${YELLOW}Git pull failed or not needed${NC}"
 
 echo -e "${YELLOW}Stopping existing containers...${NC}"
-docker-compose -f $COMPOSE_FILE down || true
+docker compose -f $COMPOSE_FILE down || true
 
 echo -e "${YELLOW}Building production image...${NC}"
-docker-compose -f $COMPOSE_FILE build --no-cache
+docker compose -f $COMPOSE_FILE build --no-cache
 
 echo -e "${YELLOW}Starting containers...${NC}"
-docker-compose -f $COMPOSE_FILE up -d
+docker compose -f $COMPOSE_FILE up -d
 
 echo -e "${YELLOW}Waiting for container to be healthy...${NC}"
 sleep 5
@@ -44,7 +44,7 @@ done
 
 if [ $ELAPSED -ge $TIMEOUT ]; then
     echo -e "${RED}Container health check timeout!${NC}"
-    docker-compose -f $COMPOSE_FILE logs --tail=50
+    docker compose -f $COMPOSE_FILE logs --tail=50
     exit 1
 fi
 
@@ -55,6 +55,6 @@ echo -e "${GREEN}Deployment completed successfully!${NC}"
 echo -e "${GREEN}Application is running on port 3000${NC}"
 echo ""
 echo "Useful commands:"
-echo "  View logs:    docker-compose -f $COMPOSE_FILE logs -f"
-echo "  Stop:         docker-compose -f $COMPOSE_FILE down"
-echo "  Restart:      docker-compose -f $COMPOSE_FILE restart"
+echo "  View logs:    docker compose -f $COMPOSE_FILE logs -f"
+echo "  Stop:         docker compose -f $COMPOSE_FILE down"
+echo "  Restart:      docker compose -f $COMPOSE_FILE restart"
