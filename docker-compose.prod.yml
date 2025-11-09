@@ -4,8 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile.prod
     container_name: huseyinkarakaya-prod
-    expose:
-      - "80"
+    ports:
+      - "3000:80"  # Host:Container
     restart: unless-stopped
     environment:
       - NODE_ENV=production
